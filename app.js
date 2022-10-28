@@ -3,7 +3,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import apiRoutes from './routes/api-routes.js'
 
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 3000
 // express
 const app = express()
 
@@ -23,7 +23,7 @@ app.use('/api/contacts', apiRoutes)
 mongoose.connect(process.env.MONGO_URI).then(() => {
     app.listen(port, (err) => {
         if (!err)
-            console.log(`Example app listening on port ${process.env.PORT}`)
+            console.log(`Example app listening on port ${port}`)
         else
             console.log('Error occurred, server can\'t start');
     })
