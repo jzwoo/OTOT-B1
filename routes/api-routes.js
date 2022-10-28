@@ -10,7 +10,7 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/all', getContacts);
+router.get('/', getContacts);
 router.get('/name', getContactByName);
 router.get('/:id', getContactById);
 router.post('/', createContact);
