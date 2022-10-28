@@ -1,12 +1,14 @@
-const {
+import {
     createContact,
     getContacts,
     getContactByName,
     getContactById,
     deleteContactById,
     updateContactById
-} = require('./contactController');
-const router = require('express').Router();
+} from '../controller/contactController.js'
+import express from 'express';
+
+const router = express.Router();
 
 router.get('/', getContacts);
 router.get('/name', getContactByName);
@@ -16,4 +18,4 @@ router.put('/:id', updateContactById);
 router.delete('/:id', deleteContactById);
 
 // Export API routes
-module.exports = router;
+export default router;

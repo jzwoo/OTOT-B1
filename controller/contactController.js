@@ -1,7 +1,7 @@
-const Contact = require('./contactModel')
-const mongoose = require('mongoose')
+import Contact from '../model/contactModel.js'
+import mongoose from 'mongoose'
 
-const createContact = async (req, res) => {
+export const createContact = async (req, res) => {
     const {name, contact} = req.body
 
     try {
@@ -12,7 +12,7 @@ const createContact = async (req, res) => {
     }
 }
 
-const getContacts = async (req, res) => {
+export const getContacts = async (req, res) => {
     try {
         const contacts = await Contact.find({})
         res.status(200).json(contacts)
@@ -21,7 +21,7 @@ const getContacts = async (req, res) => {
     }
 }
 
-const getContactById = async (req, res) => {
+export const getContactById = async (req, res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -38,7 +38,7 @@ const getContactById = async (req, res) => {
     }
 }
 
-const getContactByName = async (req, res) => {
+export const getContactByName = async (req, res) => {
     const {name} = req.query
 
     try {
@@ -51,7 +51,7 @@ const getContactByName = async (req, res) => {
     }
 }
 
-const deleteContactById = async (req, res) => {
+export const deleteContactById = async (req, res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -68,7 +68,7 @@ const deleteContactById = async (req, res) => {
     }
 }
 
-const updateContactById = async (req, res) => {
+export const updateContactById = async (req, res) => {
     const {id} = req.params
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -83,14 +83,4 @@ const updateContactById = async (req, res) => {
     } catch (err) {
         res.status(400).json({error: err.message})
     }
-}
-
-
-module.exports = {
-    createContact,
-    getContacts,
-    getContactById,
-    getContactByName,
-    deleteContactById,
-    updateContactById
 }

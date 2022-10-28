@@ -1,20 +1,27 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const apiRoutes = require('./api-routes')
+import 'dotenv/config';
+import express from 'express';
+import mongoose from 'mongoose';
+import apiRoutes from './routes/api-routes.js'
 
+const port = process.env.PORT || 8000
 // express
 const app = express()
 
 // middleware
 app.use(express.json())
+// Can be used to see what method and path was used
+// app.use((req, res, next) =>{
+//     console.log(req.method)
+//     console.log(req.path)
+//     next()
+// })
 
 // routes
 app.use('/api/contacts', apiRoutes)
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI).then(() => {
-    app.listen(process.env.PORT, (err) => {
+    app.listen(port, (err) => {
         if (!err)
             console.log(`Example app listening on port ${process.env.PORT}`)
         else
@@ -23,3 +30,5 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 }).catch((err) => {
     console.log(err)
 })
+
+export default app;
