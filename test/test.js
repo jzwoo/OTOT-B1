@@ -19,21 +19,6 @@ describe('Contacts API', () => {
 
     let testContactId;
 
-    before(() => {
-        chai.request(app)
-            .get(`/api/contacts/name?name=${testContact.name}`)
-            .end((err, res) => {
-                if (err) console.log(err)
-                if (res.status !== 200) return
-
-                chai.request(app)
-                    .delete(`/api/contacts/${res.body._id}`)
-                    .end((err, res) => {
-                        if (err) console.log(err)
-                    })
-            });
-    });
-
     describe('POST /api/contacts', () => {
         it('should create a new contact', (done) => {
             chai.request(app)
