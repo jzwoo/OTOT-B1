@@ -14,7 +14,7 @@ describe('Contacts API', () => {
 
     const updatedTestContact = {
         name: 'uniqueNameChanged',
-        contact: 999999990
+        contact: 999999991
     }
 
     let testContactId;
