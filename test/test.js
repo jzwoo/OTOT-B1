@@ -36,10 +36,10 @@ describe('Contacts API', () => {
         });
     });
 
-    describe('GET /api/contacts', () => {
+    describe('GET /api/contacts/all', () => {
         it('should get all contacts', (done) => {
             chai.request(app)
-                .get('/api/contacts')
+                .get('/api/contacts/all')
                 .end((err, res) => {
                     res.should.have.status(200)
                     res.body.should.be.a('array')
