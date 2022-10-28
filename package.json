@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --exit --timeout 5000"
   },
   "keywords": [],
   "author": "",
