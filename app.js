@@ -2,10 +2,15 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 import apiRoutes from './routes/api-routes.js'
+import cors from 'cors';
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 // express
 const app = express()
+
+// config cors so that front-end can use
+app.use(cors())
+app.options("*", cors())
 
 // middleware
 app.use(express.json())
