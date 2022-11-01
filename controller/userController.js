@@ -8,7 +8,7 @@ export const grantAccess = function (action, resource) {
         try {
             const permission = roles.can(req.user.role)[action](resource);
             if (!permission.granted) {
-                return res.status(401).json({
+                return res.status(403).json({
                     error: 'You don\'t have enough permission to perform this action'
                 });
             }
@@ -97,7 +97,7 @@ export const getUserByUserName = async (req, res) => {
 
             res.status(200).json(user)
         } else {
-            return res.status(401).json({error: `Unauthorized access`})
+            return res.status(401).json({error: `Not authenticated access`})
         }
     } catch (err) {
         res.status(400).json({error: err.message})
